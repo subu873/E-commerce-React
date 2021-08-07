@@ -1,5 +1,4 @@
 import {Fragment, useEffect, useState} from "react";
-import Header from "../component/Header/Header";
 import axios from "axios";
 import {useHistory, useParams} from "react-router-dom";
 
@@ -10,6 +9,7 @@ const ProductDetail = () => {
 
     const params = useParams()
 
+    const [count, setCount] = useState(0)
     const [data, setData] = useState({})
 
     const getProductInfo = () => {
@@ -28,16 +28,29 @@ const ProductDetail = () => {
         })
     }
 
+    const handleGoToAnyPage = (anyPage) => {
+        history.push(anyPage)
+    }
+
+    const increment = () => {
+        setCount(count + 1)
+    }
 
     useEffect(() => {
-        console.log('history parameter', history)
-        console.log('parameter', params)
-        getProductInfo()
-    }, [])
+        console.log('count increment value change', count)
+        if (count === 5) {
+            getProductInfo()
+        }
+    }, [count])
+
+    // useCallBack
+    // useReducer
+    // useMemo
+
+
 
     return (
         <Fragment>
-
 
 
             <div className="container">
@@ -45,6 +58,8 @@ const ProductDetail = () => {
                     <h1 className="product text-center p-5">
                         Product Detail page
                     </h1>
+
+                    <h5>Proudct Count {count}</h5>
 
                     <div className="row">
                         <div className="col-md-3">
@@ -64,8 +79,8 @@ const ProductDetail = () => {
                                 Available Quantity : {data.quantity} Pieces
                             </h5>
 
-                            <button className="btn btn-primary mt-4 btn-lg">
-                                Buy Product
+                            <button className="btn btn-primary mt-4 btn-lg" onClick={increment}>
+                                Increase Product Qunatity
                             </button>
 
                             <button className="btn btn-primary mt-4 btn-lg" onClick={() => history.goBack()}>
