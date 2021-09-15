@@ -6,6 +6,7 @@ import LandingPage from "./page/Landing";
 import Header from "./component/Header/Header";
 import CustomForms from "./page/CustomForms";
 import ProductsMap from "./page/arrayMap";
+import ArrayFilter from "./page/arrayFilter";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Router>
                 {/*<Header/>*/}
                 <Switch>
+                    <Route path="/array-filter" component={ArrayFilter}/>
                     <Route path="/productsListing" component={ProductsMap} />
                     <Route path="/forms" component={CustomForms}/>
                     {/* <Route path="/detail/name" component={Dummy}/>*/}
