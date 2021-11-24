@@ -1,13 +1,14 @@
 import './App.css';
 import ProductDetail from "./page/detail";
-import {Fragment} from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LandingPage from "./page/Landing";
 import CustomForms from "./page/CustomForms";
 import ProductsMap from "./page/arrayMap";
 import ArrayFilter from "./page/arrayFilter";
 import ProductListingParent from "./page/propsConcept";
 import LearnUseStateHook from "./page/LearnUseState";
+import LearnUseEffect from './page/LearnUseEffect';
 
 function App() {
     return (
@@ -15,15 +16,16 @@ function App() {
             <Router>
                 {/*<Header/>*/}
                 <Switch>
-                    <Route path="/learn-useState" component={LearnUseStateHook}/>
-                    <Route path="/props-concept" component={ProductListingParent}/>
-                    <Route path="/array-filter" component={ArrayFilter}/>
-                    <Route path="/productsListing" component={ProductsMap}/>
-                    <Route path="/forms" component={CustomForms}/>
+                    <Route path="/learn-useEffect" component={LearnUseEffect} />
+                    <Route path="/learn-useState" component={LearnUseStateHook} />
+                    <Route path="/props-concept" component={ProductListingParent} />
+                    <Route path="/array-filter" component={ArrayFilter} />
+                    <Route path="/productsListing" component={ProductsMap} />
+                    <Route path="/forms" component={CustomForms} />
                     {/* <Route path="/detail/name" component={Dummy}/>*/}
                     <Route path="/detail/:productId/:productName/:productPrice/:productQuantity"
-                           component={ProductDetail}/>
-                    <Route path="/" component={LandingPage}/>
+                        component={ProductDetail} />
+                    <Route path="/" component={LandingPage} />
                 </Switch>
 
                 {/*<footer>*/}
