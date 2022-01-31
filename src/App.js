@@ -11,6 +11,7 @@ import LearnUseStateHook from "./page/LearnUseState";
 import LearnUseEffect from './page/LearnUseEffect';
 import TestPage from './page/Dummy';
 import FormValidation from './page/FormValidation';
+import LearnUseRefHook from './page/useRefHook';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Router>
                 {/*<Header/>*/}
                 <Switch>
+                    <Route path="/use-ref-hook" component={LearnUseRefHook} />
                     <Route path="/formik" component={FormValidation} />
                     <Route path="/test-js" component={TestPage} />
                     <Route path="/learn-useEffect" component={LearnUseEffect} />
