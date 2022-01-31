@@ -1,16 +1,16 @@
-import {Fragment, useEffect, useState} from "react"
+import { Fragment, useEffect, useState } from "react"
 
 const ArrayFilter = () => {
 
     const arr = [1, 2, 3, 4, 5]
     const filteredValue = arr.filter((key) => {
-        return key != "3"
+        return key !== "3"
     })
     console.log("without filter array", arr) // [1,2,3,4,5]
     console.log("Array filtered", filteredValue)  // [1,2,4,5]
 
 
-    const [data, setData] = useState([
+    const [data] = useState([
         {
             "id": 1,
             "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -73,7 +73,7 @@ const ArrayFilter = () => {
             return key.price > 100
         })
 
-        console.log({priceGreatorThan100FilteredData})
+        console.log({ priceGreatorThan100FilteredData })
         setFilteredArr(priceGreatorThan100FilteredData)
     }
 
@@ -82,7 +82,7 @@ const ArrayFilter = () => {
             return key.price < 100
         })
 
-        console.log({priceLessThan100FilterdData})
+        console.log({ priceLessThan100FilterdData })
         setFilteredArr(priceLessThan100FilterdData)
     }
 
@@ -109,7 +109,7 @@ const ArrayFilter = () => {
                             <div className="col-md-4">
                                 <div className="card productGrid mt-5 p-3">
                                     <div className="prodImageBlock">
-                                        <img src={key.image} alt="prod name" className="prodImage"/>
+                                        <img src={key.image} alt="prod name" className="prodImage" />
                                     </div>
                                     <div className="prodContentBlock">
                                         <h1>{key.title}</h1>

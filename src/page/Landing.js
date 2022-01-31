@@ -1,5 +1,4 @@
-import {Fragment, useEffect, useState} from "react";
-import Header from "../component/Header/Header";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
 const LandingPage = () => {
@@ -13,14 +12,19 @@ const LandingPage = () => {
             .then((res) => {
                 setProducts(res.data)
             }).catch((err) => {
-            console.log('error', err)
-        })
+                console.log('error', err)
+            })
     }
 
     useEffect(() => {
         getProductList()
     }, [])
 
+    const convertToSlug = (Text) => {
+        return Text.toLowerCase()
+            .replace(/ /g, '-')
+            .replace(/[^\w-]+/g, '');
+    }
 
     return (
         <Fragment>
@@ -40,12 +44,12 @@ const LandingPage = () => {
                             return (
                                 <Fragment>
                                     <div className="col-md-4">
-                                        <a href={`/detail/${key.id}`}>
+                                        <a href={`/detail/${key.id}/${convertToSlug(key.name)}`}>
                                             <div className="productLayout border1">
                                                 <div className="prodImageBlock">
                                                     <img src={key.avatar}
-                                                         className="img img-responsive"
-                                                         alt="prod name"/>
+                                                        className="img img-responsive"
+                                                        alt="prod name" />
                                                 </div>
                                                 <div className="prodContentBlock">
                                                     <h1> {key.name}</h1>

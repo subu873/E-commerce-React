@@ -1,10 +1,24 @@
 
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { Fragment } from "react/cjs/react.production.min"
 
 const LearnUseEffect = () => {
 
+    const history = useHistory()
+
+    console.log("History obj is ", { history })
+
     const [value, setValue] = useState(5)
+
+
+    const goBack = () => {
+        history.goBack()
+    }
+
+    const goToHomePage = () => {
+        history.push("/test")
+    }
 
 
     // call only on page load
@@ -38,6 +52,14 @@ const LearnUseEffect = () => {
 
                 <button onClick={handleIncrement}>
                     Increment
+                </button>
+
+
+                <button className="btn btn-primary ml-5 mr-5" onClick={goBack}>
+                    Go Back
+                </button>
+                <button className="btn btn-primary ml-5 mr-5" onClick={goToHomePage}>
+                    Go to Homepage
                 </button>
 
             </div>

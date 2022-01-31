@@ -1,13 +1,36 @@
-import {Fragment, useEffect, useState} from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import {useHistory, useParams} from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 
 const ProductDetail = () => {
 
+    const location = useLocation()
+
+    console.log("useLocation hook", location)
 
     const history = useHistory()
 
+    const handleGoBack = () => {
+        history.goBack()
+    }
+
+    const handleGoToNextPage = () => {
+        history.goForward()
+    }
+
+
+    const handleGoToHomePage = () => {
+        history.push("/home")
+    }
+
     const params = useParams()
+
+
+    const productIdNew = params.productIdNumber
+    const productName = params.productName
+    // console.log("useparams hook", { productIdNew }, { productName })
+
+
 
     const [count, setCount] = useState(0)
     const [data, setData] = useState({})
@@ -24,20 +47,17 @@ const ProductDetail = () => {
                 console.log('product info res', res.data)
                 setData(res.data)
             }).catch((err) => {
-            console.log('error', err)
-        })
+                console.log('error', err)
+            })
     }
 
-    const handleGoToAnyPage = (anyPage) => {
-        history.push(anyPage)
-    }
 
     const increment = () => {
         setCount(count + 1)
     }
 
     useEffect(() => {
-        console.log('count increment value change', count)
+        // console.log('count increment value change', count)
         if (count === 5) {
             getProductInfo()
         }
@@ -63,7 +83,7 @@ const ProductDetail = () => {
 
                     <div className="row">
                         <div className="col-md-3">
-                            <img src={data.avatar} alt="prod name"/>
+                            <img src={data.avatar} alt="prod name" />
                         </div>
 
                         <div className="col-md-9">
@@ -83,9 +103,23 @@ const ProductDetail = () => {
                                 Increase Product Qunatity
                             </button>
 
-                            <button className="btn btn-primary mt-4 btn-lg" onClick={() => history.goBack()}>
-                                Go Back
-                            </button>
+
+
+                            <div className="col-md-12">
+                                <button className="btn btn-primary mt-4 btn-lg mr-3" onClick={handleGoBack} >
+                                    Go Back
+                                </button>
+
+                                <button className="btn btn-primary mt-4 btn-lg  mr-3" onClick={handleGoToNextPage}>
+                                    Go Forward
+                                </button>
+
+                                <button className="btn btn-primary mt-4 btn-lg  mr-3" onClick={handleGoToHomePage}>
+                                    Go to Homepage
+                                </button>
+                            </div>
+
+
                         </div>
                     </div>
 

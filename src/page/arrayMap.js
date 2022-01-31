@@ -1,7 +1,9 @@
-import {Fragment, useEffect, useState} from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
 const ProductsMap = () => {
+
+
 
     const [data, setData] = useState([])
 
@@ -11,14 +13,14 @@ const ProductsMap = () => {
         axios.get("https://fakestoreapi.com/products")
             .then((res) => {
                 if (res.status === 200) {
-                    console.log("apin res", res.data)
                     setData(res.data)
                 }
-            }).catch((err) => {
-            console.log("error", err)
-            setData([])
 
-        })
+            }).catch((err) => {
+                console.log("error", err)
+                setData([])
+
+            })
 
     }, [])
 
@@ -38,7 +40,7 @@ const ProductsMap = () => {
                                 <div className="col-md-4">
                                     <div className="card productGrid mt-5 p-3">
                                         <div className="prodImageBlock">
-                                            <img src={key.image} alt="prod name" className="prodImage"/>
+                                            <img src={key.image} alt="prod name" className="prodImage" />
                                         </div>
                                         <div className="prodContentBlock">
                                             <h1>{key.title}</h1>
