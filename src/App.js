@@ -12,16 +12,20 @@ import LearnUseEffect from './page/LearnUseEffect';
 import TestPage from './page/Dummy';
 import FormValidation from './page/FormValidation';
 import LearnUseRefHook from './page/useRefHook';
+import LearnUseCallBackHook from './page/LearnUseCallbackHook';
+import LearnMemo from './page/LearnMemo';
+import LearnPropDrilling from './page/LearnPropDrilling';
 
 function App() {
-
-    console.log("project env", process.env)
 
     return (
         <Fragment>
             <Router>
                 {/*<Header/>*/}
                 <Switch>
+                    <Route path="/learn-prop-drilling" component={LearnPropDrilling} />
+                    <Route path="/learn-memo" component={LearnMemo} />
+                    <Route path="/usecallback-hook" component={LearnUseCallBackHook} />
                     <Route path="/use-ref-hook" component={LearnUseRefHook} />
                     <Route path="/formik" component={FormValidation} />
                     <Route path="/test-js" component={TestPage} />

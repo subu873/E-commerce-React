@@ -3,36 +3,27 @@ import { useEffect } from "react/cjs/react.development";
 
 const LearnUseRefHook = () => {
 
-    const [name, setName] = useState("")
+    const [inputValue, setInputValue] = useState("");
+    const previousInputValue = useRef("a");
 
-    const inputRef = useRef();
-
-    const handleRefClick = () => {
-        inputRef.current.style.display = 'none';
-        inputRef.current.focus()
-    }
-
+    console.count('counter')
     useEffect(() => {
-        console.log("rerender")
-    })
 
-    const handleChange = (e) => {
-        setName(e.target.value)
-    }
+        console.log({ inputValue }, { previousInputValue })
+        previousInputValue.current = inputValue;
+    }, [inputValue]);
 
     return (
-        <Fragment>
-
-            <input type="text" value="" onChange={handleChange} value={name} />
-
-            <input type="text" ref={inputRef} name="name" />
-
-            <button onClick={handleRefClick}>
-                Submit
-            </button>
-
-        </Fragment>
-    )
+        <>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+            />
+            <h2>Current Value: {inputValue}</h2>
+            <h2>Previous Value: {previousInputValue.current}</h2>
+        </>
+    );
 }
 
 export default LearnUseRefHook
